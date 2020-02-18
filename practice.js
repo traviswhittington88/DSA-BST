@@ -85,22 +85,41 @@ class BinarySearchTree {
   }
 
   insert(key, value) {
-    if () {}
-    else if () {
-      if () {}
-      else {}
+    if (this.key == null) { // base case
+      this.key = key;
+      this.value = value;
+    }
+    else if (key < this.key) {
+      if (this.left == null) {  // base case
+        this.left = new BinarySearchTree(key, value, this);
+      }
+      else {
+        this.left.insert(key, value);
+      }
     }
     else {
-      if () {}
-      else {}
+      if (this.right == null) { // base case
+        this.right = new BinarySearchTree(key, value, this);
+      }
+      else {
+        this.right.insert(key, value);
+      }
     }
   }
 
   find(key) {
-    if () {}
-    else if () {}
-    else if () {}
-    else {}
+    if (this.key == key) {  //base case
+      return this.value;
+    }
+    else if (key < this.key && this.left) {
+      this.left.find(key);
+    }
+    else if (key > this.key && this.right) {
+      this.right.find(key);
+    }
+    else {
+      throw new Error('Key not found');
+    }
   }
 
   insert(key, value) {  // 3 main conditions with 2 nested conditions in else/if else
